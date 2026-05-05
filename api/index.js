@@ -105,7 +105,10 @@ module.exports = async (req, res) => {
                 stats.orders.unshift(newOrder);
                 return res.status(200).json({ status: 'success', id: data.id, pix_copia_e_cola: data.pix.qrcode });
             } else {
-                return res.status(400).json({ error: data.message || 'Erro na StreetPay' });
+                console.error("Erro StreetPay:", data);
+                return res.status(400).json({ 
+                    error: data.message || data.error || (data.errors ? JSON.stringify(data.errors) : 'Erro no gateway de pagamento') 
+                });
             }
         }
 

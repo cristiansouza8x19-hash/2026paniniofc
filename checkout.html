@@ -279,7 +279,7 @@
         }
 
         // Track Checkout
-        fetch('/.netlify/functions/backend?action=trackCheckout').catch(e => console.log('Tracking off'));
+        fetch('/api?action=trackCheckout').catch(e => console.log('Tracking off'));
     </script>
 </body>
 </html>
